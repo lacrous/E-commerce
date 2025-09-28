@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium E-Commerce | Hassan El-Deghidy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                LUXE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="nav-link me-4" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="nav-link cart-icon" id="cartIcon" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" aria-hidden="true">0</span>
+                    </a>
+                    <a href="#" class="btn btn-outline-primary ms-3 rounded-pill px-4">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title animate-on-scroll">Premium Collection 2023</h1>
+                    <p class="hero-subtitle animate-on-scroll">Discover our exclusive range of luxury products crafted with precision and passion. Elevate your lifestyle with our curated selection.</p>
+                    <a href="#products" class="btn btn-hero animate-on-scroll">
+                        Explore Collection
+                    </a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="animate-on-scroll" style="animation-delay: 0.3s;">
+                        <img src="https://placehold.co/500x400/FFFFFF/6C63FF?text=Premium+Products" alt="Premium Products" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-5" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="row" id="productGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" class="product-detail-img" id="modalProductImg" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modalProductName" class="mb-2"></h3>
+                            <div class="product-rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted ms-2">(128 reviews)</span>
+                            </div>
+                            <p class="product-price mb-4" id="modalProductPrice"></p>
+                            <p class="text-muted mb-4" id="modalProductDesc"></p>
+                            
+                            <div class="mb-4">
+                                <h6 class="mb-3">Quantity:</h6>
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn" id="decreaseQty" aria-label="Decrease quantity">-</button>
+                                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" aria-label="Quantity">
+                                    <button class="quantity-btn" id="increaseQty" aria-label="Increase quantity">+</button>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-add-to-cart w-100 mb-3" id="addToCartBtn">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                            <button class="btn btn-outline-secondary w-100">
+                                <i class="fas fa-heart me-2"></i>Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="fas fa-shopping-cart me-2"></i>Your Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div class="cart-total">
+                        <div class="cart-total-item">
+                            <span>Subtotal:</span>
+                            <strong id="subtotal">$0.00</strong>
+                        </div>
+                        <div class="cart-total-item">
+                            <span>Shipping:</span>
+                            <strong>Free</strong>
+                        </div>
+                        <div class="cart-total-item">
+                            <span>Tax:</span>
+                            <strong>$0.00</strong>
+                        </div>
+                        <div class="cart-total-item total">
+                            <span>Total:</span>
+                            <strong id="total">$0.00</strong>
+                        </div>
+                        <button class="btn btn-add-to-cart w-100 mt-4">
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <h4 class="footer-title">LUXE STORE</h4>
+                    <p class="mb-4">Premium quality products with exceptional service. Your satisfaction is our priority. We deliver luxury to your doorstep.</p>
+                    <div class="mb-4">
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5">
+                    <h5 class="footer-title">Shop</h5>
+                    <a href="#" class="footer-link">New Arrivals</a>
+                    <a href="#" class="footer-link">Best Sellers</a>
+                    <a href="#" class="footer-link">Featured Products</a>
+                    <a href="#" class="footer-link">Special Offers</a>
+                    <a href="#" class="footer-link">Seasonal Collections</a>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5">
+                    <h5 class="footer-title">Information</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Shipping Policy</a>
+                    <a href="#" class="footer-link">Return Policy</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-5">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="mb-4">Subscribe to get special offers, free giveaways, and new product alerts.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control rounded-start-pill" placeholder="Your email" aria-label="Your email">
+                        <button class="btn btn-primary rounded-end-pill" aria-label="Subscribe">Subscribe</button>
+                    </div>
+                    <div class="mt-4">
+                        <img src="https://placehold.co/300x50/FFFFFF/6C63FF?text=Secure+Payments" alt="Secure Payments" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 LUXE STORE. All rights reserved. Premium E-Commerce Experience by Hassan El-Deghidy</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" role="button" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
